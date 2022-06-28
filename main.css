@@ -29,6 +29,7 @@ p,h1,h2,h3,h4,h5,h6,a {
     padding: 0;
     margin-right: 2;
     margin-left: 2;
+    transition-duration: 0.5s;
 }
 
 #page {
@@ -49,8 +50,13 @@ p,h1,h2,h3,h4,h5,h6,a {
     margin: auto;
     padding: 0;
     border-radius: 25px;
+    transition-duration: 0.5s;
 }
 
-.navitem:hover, .divbutton:hover {
-    background-color: #292929;
+.navitem:hover {
+    background-color: #333333;
+    width: 120;
+}
+.divbutton:hover {
+    background-color: #333333;
 }
