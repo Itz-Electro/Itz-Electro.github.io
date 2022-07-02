@@ -6,15 +6,17 @@ const cmds = [
     `help`,
     `clear`,
     `info`,
-    `js`,
     `exit`,
+    `js`,
+    `url`,
 ]
 const helpcmds = [
     `help - List all available commands`,
     `clear - Clears the terminal`,
     `info - Get website information`,
-    `js (script) - Run some javascript`,
     `exit - Go back to main website`,
+    `js (script) - Run some javascript`,
+    `url (url) - Go to a url`
 ]
 
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
@@ -78,6 +80,17 @@ function command(command) {
             terminal.innerHTML=``
         }
 
+        if (command==`info`) {
+            terminal.innerHTML+=`<h4 class="line">This is a terminal i built</h4>`
+            terminal.innerHTML+=`<h4 class="line">that i and others can use to quick calculations (using js)</h4>`
+            terminal.innerHTML+=`<h4 class="line">or even run javascript code if inspect element is blocked</h4>`
+            terminal.innerHTML+=`<h4 class="line">Main website: itz-electro.github.io or type "exit"</h4>`
+        }
+
+        if (command==`exit`) {
+            window.location.assign(`../index.html`)
+        }
+
         if (command.slice(0,2) == `js`) {
             var solution=command.slice(2,command.length)
             solution=solution.replace(`console.log`, `output`)
@@ -91,16 +104,11 @@ function command(command) {
             }
         }
 
-        if (command==`info`) {
-            terminal.innerHTML+=`<h4 class="line">This is a terminal i built</h4>`
-            terminal.innerHTML+=`<h4 class="line">that i and others can use to quick calculations (using js)</h4>`
-            terminal.innerHTML+=`<h4 class="line">or even run javascript code if inspect element is blocked</h4>`
-            terminal.innerHTML+=`<h4 class="line">Main website: itz-electro.github.io or type "exit"</h4>`
+        if (command.slice(0,3) == `url`) {
+            var url=command.slice(3,command.length)
+            window.location.assign(url)
         }
 
-        if (command==`exit`) {
-            window.location.assign(`../index.html`)
-        }
 
     } else if (command != ``) {
         console.log(`Not a command`)
