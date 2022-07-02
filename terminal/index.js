@@ -20,6 +20,8 @@ const helpcmds = [
     `exit - Go back to main website`,
 ]
 
+
+
 window.addEventListener('keydown', function(e) {
     if(e.keyCode == 32 && e.target == document.body) {
       e.preventDefault();
@@ -59,9 +61,13 @@ function command(command) {
         if (command.slice(0,2) == `js`) {
             var solution=command.slice(2,command.length)
             solution=solution.replace(`console.log`, `output`)
-            solution=eval(solution)
-            if (solution != undefined) {
-                terminal.innerHTML+=`<h4 class="line">${solution}</h4>`
+            try {
+                solution=eval(solution)
+                if (solution != undefined) {
+                    terminal.innerHTML+=`<h4 class="line">${solution}</h4>`
+                }
+            } catch(err) {
+                terminal.innerHTML+=`<h4 class="line">${err}</h4>`
             }
         }
 
@@ -86,4 +92,8 @@ function command(command) {
 
 function output(x) {
     terminal.innerHTML+=`<h4 class="line">${x}</h4>`
+}
+
+function secret() {
+    terminal.innerHTML+=`<h4 class="line">Shhh... This is a secret, dont tell anyone...</h4>`
 }
