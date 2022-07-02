@@ -66,7 +66,7 @@ window.addEventListener('keyup', function (e) {
 
 function command(command) {
     terminal.innerHTML+=`<h4 class="line" style="color: #0a7a09;">User:~$ ${command} </h4>`
-    if (cmds.includes(command) || cmds.includes(command.slice(0,2))) {
+    if (cmds.includes(command) || cmds.includes(command.slice(0,2)) || cmds.includes(command.slice(0,3))) {
         console.log(`Command found`)
 
         if (command==`help`) {
