@@ -40,6 +40,7 @@ window.addEventListener('keydown', function (e) {
   }, false);
 
 function command(command) {
+    lines[lines.length-1].innerHTML=`<h4 class="line" ${inputstyle}>User:~$ ${input} </h4>`
     input=``
     if (cmds.includes(command) || cmds.includes(command.slice(0,2))) {
         console.log(`Command found`)
