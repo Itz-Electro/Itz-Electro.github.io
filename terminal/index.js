@@ -1,9 +1,6 @@
 const terminal = document.getElementById(`terminal`)
 const lines = document.getElementsByClassName(`line`)
-
-var input=``
-var inputstyle=`style="color: #0a7a09;"`
-terminal.innerHTML+=`<h4 class="line" ${inputstyle}>User:~$  </h4>`
+const textbox = document.getElementById(`textbox`)
 
 const cmds = [
     `help`,
@@ -20,7 +17,10 @@ const helpcmds = [
     `exit - Go back to main website`,
 ]
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
 
+var cmdmemory = [``,`help`]
+var memoryselect = 0;
 
 window.addEventListener('keydown', function(e) {
     if(e.keyCode == 32 && e.target == document.body) {
@@ -28,22 +28,42 @@ window.addEventListener('keydown', function(e) {
     }
   });
 
+var enter = new Boolean(false)
+
 window.addEventListener('keydown', function (e) {
-    if (e.key.length == 1) {
-        input+=e.key
-        lines[lines.length-1].innerHTML=`<h4 class="line" ${inputstyle}>User:~$ ${input}| </h4>`
-    } else {
-        if (e.key == `Enter`) {command(input.toLowerCase())}
-        if (e.key == `Backspace`) {
-            input=input.slice(0,input.length-1)
-            lines[lines.length-1].innerHTML=`<h4 class="line" ${inputstyle}>User:~$  ${input}| </h4>`
+        if (e.key == `Enter` && enter==false) {
+            command(textbox.value.toLowerCase())
+            enter=true
+            cmdmemory[0]=textbox.value
+            cmdmemory.unshift(``)
         }
+        
+        if (e.key == `Enter`) {
+            textbox.value=""
+            memoryselect=0
+        }
+        if (e.key == `ArrowUp`) {
+            memoryselect+=1
+            memoryselect=clamp(memoryselect,0,cmdmemory.length-1)
+            textbox.value=cmdmemory[memoryselect]
+        }
+        if (e.key == `ArrowDown`) {
+            memoryselect-=1
+            memoryselect=clamp(memoryselect,0,cmdmemory.length-1)
+            textbox.value=cmdmemory[memoryselect]
+        }
+
+}, false);
+window.addEventListener('keyup', function (e) {
+    if (e.key == `Enter`) {
+        textbox.value=""
+        enter=false
     }
-  }, false);
+}, false);
+
 
 function command(command) {
-    lines[lines.length-1].innerHTML=`<h4 class="line" ${inputstyle}>User:~$ ${input} </h4>`
-    input=``
+    terminal.innerHTML+=`<h4 class="line" style="color: #0a7a09;">User:~$ ${command} </h4>`
     if (cmds.includes(command) || cmds.includes(command.slice(0,2))) {
         console.log(`Command found`)
 
@@ -86,8 +106,7 @@ function command(command) {
         console.log(`Not a command`)
         terminal.innerHTML+=`<h4 class="line">Command '${command}' does not exist</h4>`
     }
-    terminal.innerHTML+=`<h4 class="line" ${inputstyle}>User:~$  </h4>`
-    lines[lines.length-1].scrollIntoView();
+    document.getElementById(`input`).scrollIntoView();
 }
 
 function output(x) {

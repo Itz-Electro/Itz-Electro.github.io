@@ -23,6 +23,29 @@ p,h1,h2,h3,h4,h5,h6,a {
 #terminal {
     margin: 0;
     padding: 40;
+    padding-bottom: 0;
     width: fit-content;
+    height: fit-content;
+}
+#input {
+    color: #0a7a09;
+    padding: 0;
+    padding-left: 40;
+    padding-right: 40;
+}
+#textbox {
+    font-family: 'M PLUS 1p', sans-serif;
+    vertical-align: top;
+    resize: none;
+    font-weight: bold;
+    font-size: 16;
+    background-color: #101010;
+    color: #0a7a09;
+    border: none;
+    outline: none;
+    width: calc(100% - 70px);
+    padding: 0;
+    padding-bottom: 10;
+    margin: 0;
     height: fit-content;
 }
