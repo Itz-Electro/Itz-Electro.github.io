@@ -39,9 +39,26 @@ p,h1,h2,h3,h4,h5,h6,a {
 .pagebox {
     margin: auto;
     width: 500;
+    height: 455;
     background-color: #141414;
     border-radius: 25px;
 }
+
+.pagebox img {
+    width: 450; 
+    height: auto; 
+    margin-bottom: 20;
+}
+
+@media screen and (max-width: 550px) {
+    .pagebox {
+      width: 320;
+      height: 380;
+    }
+    .pagebox img {
+        width: 280;
+    }
+  }
 
 .divbutton {
     background-color: #1f1f1f;
