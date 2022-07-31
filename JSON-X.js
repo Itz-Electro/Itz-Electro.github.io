@@ -1,10 +1,10 @@
 // Electros JSON extension
-
+/*
 const formatMessage = require('format-message');
 const BlockType = require('../../extension-support/block-type');
 const ArgumentType = require('../../extension-support/argument-type');
 const Cast = require('../../util/cast');
-
+*/
 class JSONX {
     getInfo () {
         return {
