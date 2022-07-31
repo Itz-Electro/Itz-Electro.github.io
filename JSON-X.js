@@ -76,7 +76,7 @@ class JSONX {
 
 }
 
-module.exports = JSONX;
+Scratch.extensions.register(new JSONX());
 
 
 
