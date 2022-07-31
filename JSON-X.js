@@ -1,4 +1,4 @@
-const icon = fetch('https://itz-electro.github.io/jsonx.svg')
+//const icon = fetch('https://itz-electro.github.io/jsonx.svg')
 
 class JSONX {
 	constructor(runtime, extensionId) {
@@ -10,8 +10,8 @@ class JSONX {
 			name: 'JSON-X',
             color1: '#FF3F31',
             color2: '#FF3F31',
-			blockIconURI: icon,
-			menuIconURI: icon,
+			//blockIconURI: icon,
+			//menuIconURI: icon,
 			blocks: [
 			{
 				opcode: 'parseJSON',
