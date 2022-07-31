@@ -6,8 +6,8 @@ class JSONX {
 		return {
 			id: 'jsonx',
 			name: 'JSON-X',
-			blockIconURI: none,
-			menuIconURI: none,
+			//blockIconURI: none,
+			//menuIconURI: none,
 			blocks: [
 			{
 				opcode: 'parseJSON',
